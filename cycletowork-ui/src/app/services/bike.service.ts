@@ -17,11 +17,11 @@ export class BikeService {
   }
 
   getBike(id: number) {
-    return this.httpClient.get('/server/api/v1/bike/' + id);
+    return this.httpClient.get('/server/api/v1/bikes/' + id);
   }
 
   registerBike(bike) {
     const body = JSON.stringify(bike);
-    return this.httpClient.post('server/api/v1/bikes', body, httpOptions);
+    return this.httpClient.post('/server/api/v1/bikes', body, httpOptions);
   }
 }

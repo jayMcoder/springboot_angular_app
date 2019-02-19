@@ -13,6 +13,15 @@ export class BikeService {
   constructor(private httpClient: HttpClient) { }
 
   getBikes() {
-    return this.httpClient.get('/server/api/v1/bikes', httpOptions);
+    return this.httpClient.get('/server/api/v1/bikes');
+  }
+
+  getBike(id: number) {
+    return this.httpClient.get('/server/api/v1/bike/' + id);
+  }
+
+  registerBike(bike) {
+    const body = JSON.stringify(bike);
+    return this.httpClient.post('server/api/v1/bikes', body, httpOptions);
   }
 }

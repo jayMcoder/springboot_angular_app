@@ -13,11 +13,15 @@ export class BikeService {
   constructor(private httpClient: HttpClient) { }
 
   getBikes() {
-    return this.httpClient.get('/server/api/v1/bikes');
+    const token = localStorage.getItem('access_token');
+    return this.httpClient.get('/server/api/v1/bikes',
+      {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)});
   }
 
   getBike(id: number) {
-    return this.httpClient.get('/server/api/v1/bikes/' + id);
+    const token = localStorage.getItem('access_token');
+    return this.httpClient.get('/server/api/v1/bikes/' + id,
+      {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)});
   }
 
   registerBike(bike) {
